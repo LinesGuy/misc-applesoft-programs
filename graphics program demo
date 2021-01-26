@@ -1,0 +1,48 @@
+0 rem demo of graphics template
+0 rem runs fast af (compared to previous methods)
+
+100 rem setup:
+110 hgr2
+ 
+200 rem Initial values:
+210 X1 = 20 : Y1 = 100
+220 dim X2(70)
+230 y3 = 30
+ 
+ 
+ 
+300 rem render engine loop:
+310 poke 230,32 : gosub 400 : poke 49236,0 : poke 230,64 : gosub 400 : poke 49237,0 : goto 310
+ 
+ 
+ 
+400 rem colors + sprite index:
+405 hcolor = 0 : gosub 800 : rem background
+410 hcolor = 3 : gosub 500 : rem plus
+420 gosub 600 : rem different speed sine waves unconnected
+430 gosub 700 : rem different speed sine waves connected
+440 hcolor = 1 : gosub 900  : rem diamond moving in circles
+498 return
+ 
+ 
+499 rem everything after this line is code for sprites
+ 
+800 hplot 0,0 : call -3082 : return
+ 
+500 X1 = X1 + 1 : if X1 > 200 then X1 = 20
+510 hplot X1+5,Y1 to X1+5,Y1+10 : hplot X1,Y1+5 to X1+10,Y1+5
+520 return
+ 
+600 for Y = 10 to 70 step 10
+610 X2(Y) = X2(Y) + Y/250 : hplot sin(X2(Y))*10+50,Y
+620 next
+630 return
+ 
+700 X3(1) = X3(1) + 0.1 : X3(2) = X3(2) + 0.05 : X3(3) = X3(3) + 0.025
+710 hplot sin(x3(1))*25+150,Y3 to sin(x3(2))*10+150,Y3+15 to sin(x3(3))*25+150,y3+30
+720 return
+ 
+900 X4 = X4 + 0.1 : Y4 = Y4 + 0.1
+905 XS = sin(X4)*20 : YS = cos(Y4)*20
+910 hplot XS+150,YS+100 to XS+155,YS+105 to XS+150,YS+110 to XS+145,YS+105 to XS+150,YS+100
+920 return
