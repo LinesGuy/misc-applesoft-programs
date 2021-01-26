@@ -1,0 +1,10 @@
+0 rem generates an "asteroid"
+0 rem was to be used in an asteroids clone but never did get used
+
+1 si = 30 : bh = 10 : bq = 10 : rem size, bump height, bump quantity
+
+
+100 hgr2 : hcolor = 3
+105 ra = int(rnd(1)*bh)-bh/2 : hplot sin(x)*(si+ra)+140,cos(x)*(si+ra)+96
+110 for x = 0 to 6.282 step 1/bq : ra = int(rnd(1)*bh)-bh/2 : hplot to sin(x)*(si+ra)+140,cos(x)*(si+ra)+96 : next
+120 x = 0 : ra = int(rnd(1)*bh)-bh/2 : hplot to sin(x)*(si+ra)+140,cos(x)*(si+ra)+96
