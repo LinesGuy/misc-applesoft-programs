@@ -1,0 +1,19 @@
+0 rem Program to find mersenne primes. It finds 2^19-1 in a few seconds
+0 rem then 2^31-1 after a minute, then crashes.
+
+10 text:home:start = 1
+16 if start/2 = int(start/2) then start = start + 1
+20 for N = start to 9999999999 step 2
+30 for P = 2 to N^0.5
+40 if int(N/P) = N/P then goto 70
+50 next P
+60 goto 100
+70 P = 2 : next N
+80 end
+
+100 X = (2^N)-1
+110 for P = 2 to X^0.5
+120 if int(X/P) = X/P then goto 150
+130 next P
+140 print X;"  (2^";N;"-1)"
+150 P = 2 : Next N
