@@ -1,0 +1,41 @@
+0 rem Bubble sort visualised
+
+0 rem Custom vars
+10 height = 159
+20 items = 200
+
+0 rem Setup 
+110 hgr : hcolor = 3
+120 for i = 1 to 20 : print : next
+130 passes = 0
+120 rmaining = items - 1 : rem "rmaining" -> "remaining", can't start var name with rem
+
+200 print "Create item array with " + str$(items) + " items"
+210 dim item(items)
+220 for i = 1 to items
+230 item(i) = int(i/items*height)
+240 next i
+
+300 print "Randomise array order"
+310 for i = 1 to items
+320 random = int(rnd(1)*items)
+330 temp = item(i)
+340 item(i) = item(random)
+350 item(random) = temp
+360 next i
+
+400 print "First plot"
+410 for i = 1 to items
+420 hplot i,height to i,height-item(i)
+430 next i
+
+0 rem LABEL: bubble sort pass
+500 passes = passes + 1
+510 print "Pass #" + str$(passes)
+520 for i = 1 to rmaining : if item(i) > item(i+1) then hcolor = 0 : hplot i,he-item(i) to i,he-item(i+1)-1 : hcolor = 3 : hplot i+1,he-item(i+1)-1 to i+1,he-item(i) : temp = item(i) : item(i) = item(i+1) : item(i+1) = temp
+530 next
+540 rmaining = rmaining - 1
+550 if rmaining >= 1 then goto 500 : rem GOTO: bubble sort pass
+560 print "Done"
+
+999 end
