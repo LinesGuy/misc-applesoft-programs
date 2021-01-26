@@ -1,0 +1,28 @@
+0 rem bubble sort visualised v1
+
+1 num(1) = 150 : rem how many arrays (1-279)
+2 num(2) = 150 : rem max height of array (1-191)
+3 seed = 10 : rem seed used for random num generator
+
+9 for s = 1 to seed : q = rnd(1) : next
+10 hgr2 : dim X(280) : hcolor = 3
+20 for x = 0 to num(1)
+30 X(X) = 191 - int(rnd(1)*num(2)) : hplot X,191 to X,X(X)
+40 next
+45 Z = num(1)-1
+ 
+50 for x = 0 to Z
+60 if X(X)<X(X+1) then gosub 1000
+70 next
+80 Z = Z - 1 : if z <> 0 then goto 50
+90 for x = 0 to num(1)
+100 hcolor = 1 : hplot X,191 to X,X(X)
+110 next
+ 
+ 
+ 
+999 end
+1000 hcolor = 0 : hplot X,191 to X,X(X) to X+1,191 to X+1,X(X+1)
+1010 S = X(X) : X(X) = X(X+1) : X(X+1) = S
+1020 hcolor = 3 : hplot X,191 to X,X(X) : hplot X+1,191 to X+1,X(X+1)
+1030 return
