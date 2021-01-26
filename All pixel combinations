@@ -1,0 +1,12 @@
+0 rem // next two lines are the actual description i wrote when i made this proram //
+0 rem This program plots every possible combination of black and white pixels... eventually.
+0 rem It actually crashes once it finishes the first line, But that would take about 20 years to do, So i don't see much point in fixing it.
+
+10 gr : color = 15 : plot 0,0 : x = 0 : y = 0
+20 if scrn(x,y) = 15 then gosub 1000
+30 if scrn(x,y) = 0 then color = 15 : plot x,y
+40 goto 20
+
+999 end
+1000 if scrn(x+1,y) = 15 then color = 0 : plot x+1,y : x = x + 1 : goto 1000
+1010 color = 0 : plot x,y : color = 15 : plot x+1,y : x = 0 : return
