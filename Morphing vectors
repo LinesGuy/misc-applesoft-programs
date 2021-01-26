@@ -1,0 +1,18 @@
+0 rem Random visual thing. It's called 'morping vectors' but that may be wrong.
+
+5 v = 75 : rem vector count
+10 R = 70 : rem radius
+20 t = 0.1 : rem maximum movement speed
+
+1 text : home : print "Generating random numbers, please wait":  for x = 0 to peek(78)*10 : er=rnd(1) : next
+2 hgr : hcolor = 3
+30 v = 1/v : v = v * 6.282
+198Poke230,32:gosub 199:Poke49236,0:poke 230,64:gosub199:poke49237,0:goto198
+199 fr=fr+1:?fr:call-3086
+200 for x = 0 to 6.282 step v : hplot sin(x+v(1))*r+r,cos(x+v(2))*r+r to sin(x+v(3))*r+r,cos(x+v(4))*r+r  : next
+300 for x = 1 to 4 : av(x) = av(x) + (rnd(1)/100)-0.005
+301 if av(x) < -t then av(x) = -t
+302 if av(x) > t then av(x) = t
+305 next
+310 for x = 1 to 4 : v(x) = v(x) + av(x) : next
+999 return
