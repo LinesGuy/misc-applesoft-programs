@@ -1,0 +1,34 @@
+0 rem particle engine based on a video I saw
+0 rem very optimised but unfortunately still too slow to run alongisde anything complex
+
+10 hgr : hcolor = 3
+
+21 sx = 140
+22 sy = 96
+23 g = 0.5
+24 n = 30
+35 dim vx(n) : dim vy(n)
+40 dim age(n)
+45 dim exist(n)
+
+199Poke230,32:gosub 200:Poke49236,0:poke 230,64:gosub200:poke49237,0:goto199
+200fr=fr+1:?"frame ";fr;", pn ";pn:call-3086
+205 gosub 1000 : rem add particle
+207 for i = 1 to n : if exist(i) = 1 then gosub 2000 : rem calc and draw
+208 next i
+210 
+
+999 return
+
+1000 rem add particle
+1005 done = 0
+1010 for i = 1 to n
+1020 if exist(i) = 0 then exist(i) = 1 : vx(i) = int(rnd(1)*10)-5 : vy(i) = int(rnd(1)*10)-5 : age(i) = 0 : pn = pn + 1 : done = 1
+1100 if done = 0 then next i
+1110 return
+
+2000 rem calc and draw
+2010 age(i) = age(i) + 0.3
+2013 nx = sx+(vx(i)*age(i)) : ny = sy+(vy(i)*age(i))+(g*(age(i)*age(i))/2)
+2015 if nx < 0 or nx>279 or ny<0 or ny>159 then exist(i) = 0 : pn = pn - 1 : return
+2020 hplot nx,ny : return
