@@ -1,0 +1,23 @@
+0 rem Lo-res game of life. Somehow significantly slower than hi-res game of life.
+
+5 height = 38 : rem max 38
+6 width = 38  : rem max 38
+
+10 dim W(height*width) : gr : color = 15 : for r = 1 to 40 : ? : next
+
+50 for x = 1 to width : for y = 1 to height : if rnd(1)>0.5 then plot x,y
+80 next : next
+
+100 Q = 0 : G = G + 1 : print "Generation: ";G
+110 for x = 1 to width : for y = 1 to height : Q = Q + 1 : P = 0 : P = (scrn(X-1,y-1)/15)+(scrn(X  ,y-1)/15)+(scrn(X+1,y-1)/15)+(scrn(X+1,y  )/15)+(scrn(X+1,y+1)/15)+(scrn(X  ,y+1)/15)+(scrn(X-1,y+1)/15) + (scrn(X-1,y)/15)
+120 if P<2 or P>3 then W(Q) = 0 : next : next
+130 if P = 2 then W(Q) = 2 : next : next
+140 if P = 3 then W(Q) = 1 : next : next
+
+190 Q = 0
+200 for x = 1 to width : for y = 1 to height : Q = Q + 1
+210 if W(Q) = 0 then color = 0 : plot X,Y
+220 if W(Q) = 1 then color = 15 : plot X,Y
+230 next : next
+240 color = 0 : hlin 0,39 at 0 : hlin 0,39 at 39 : vlin 0,39 at 0 : vlin 0,39 at 39
+250 goto 100
