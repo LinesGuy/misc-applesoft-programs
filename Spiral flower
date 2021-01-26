@@ -1,0 +1,10 @@
+0 rem Cool visual thing. Originally called "spiral flower"
+
+10 hgr2 : hcolor = 3
+15 height = 191 : width = 279
+20 vectors = 128
+30 radius = 95.5
+40 spd = 1.5705
+50 dim vector(vectors)
+
+198Poke230,32:call-3086:hplot width/2,height/2:for i = 1 to vectors : hplot to width/2+sin(vector(i))*i/vectors*radius,height/2+cos(vector(i))*i/vectors*radius : vector(i) = vector(i) + i / vectors * spd : next i:Poke49236,0:poke 230,64:call-3086:hplot width/2,height/2:for i = 1 to vectors : hplot to width/2+sin(vector(i))*i/vectors*radius,height/2+cos(vector(i))*i/vectors*radius : vector(i) = vector(i) + i / vectors * spd : next i:poke49237,0:goto198
