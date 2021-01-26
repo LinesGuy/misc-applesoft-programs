@@ -1,0 +1,38 @@
+0 rem a%b = a - int( a / b )* b
+0 rem 0=black, 1=green, 2=voilet, 3=white, 5=orange, 6=blue
+0 rem k$="":ifpeek(-16384)>127thengetk$:gosub1000
+0 rem 360/(pi*2)=57.295
+0 rem x=int(pdl(0)*1.094):y=int(pdl(1)*.749)
+10 hgr : hcolor = 3 : width = 280 : height = 192
+20 hr = 20 : rem hexagon radius
+
+0 rem Program to draw a grid of hexagons
+0 rem If you hover the mouse over a hexagon then it will turn it green
+0 rem and display the hexagonal coordinates
+
+0 rem This program runs at about 5 frames per second which is genuinely
+0 rem very fast given how many draw operations it is doing
+
+199Poke230,32:gosub 200:Poke49236,0:poke 230,64:gosub200:poke49237,0:goto199
+200remfr=fr+1:?"frame ";fr:call-3086
+200 call-3086
+
+209 min=999
+210 x=int(pdl(0)*1.094):y=int(pdl(1)*.749)
+
+220 hcolor = 3
+235 for hx = -int(width/2/(hr*1.5)) to width/2/(hr*1.5) : for hy = -int(height/2/(hr*1.5)) to height/2/(hr*1.5)
+240 gosub 1000
+243 d = sqr((x-cx)^2+(y-cy)^2) : if d<min then min=d : mx=hx : my=hy
+245 next : next
+250 print mx;", ";my
+260 hcolor = 1
+270 hx = mx : hy = my : gosub 1000
+
+999 return
+
+1000 rem draw hexagon with hx, hy, hr
+1010 cx = width/2+hx*(hr*1.5)
+1020 cy = height/2+hy*(hr*2)+(hx-int(hx/2)*2)*hr
+1030 if cx<280-hr and cx>0+hr and cy<192-hr and cy>0+hr then hplot cx-hr,cy to cx-hr/2,cy-hr to cx+hr/2,cy-hr to cx+hr,cy to cx+hr/2,cy+hr to cx-hr/2,cy+hr to cx-hr,cy
+1040 return
