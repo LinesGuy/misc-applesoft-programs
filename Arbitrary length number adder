@@ -1,0 +1,26 @@
+0 rem Program to add two numbers of any length
+0 rem Since AS BASIC has a fairly low limit for regular integer addition.
+
+10 text : pr#0
+ 
+0 rem Numbers to add:
+20 n1$ = "1946284628648198247651913"
+30 n2$ = "8175832638363856421903252"
+ 
+0 rem Make numbers same length by adding 0's at the start
+40 if len(n2$) < len(n1$) then n2$ = "0" + n2$ : goto 40
+50 if len(n1$) < len(n2$) then n1$ = "0" + n1$ : goto 50
+ 
+0 rem Add numbers:
+100 for x = len(n1$) to 1 step -1
+110 n = val(mid$(n1$,x,1)) + val(mid$(n2$,x,1)) + c
+115 c = 0 : rem
+120 if n > 9 then c = 1 : n = n - 10 : rem (c)arry
+130 f$ = str$(n) + f$
+140 next
+ 
+0 rem Add the final "1" if needed:
+145 if c = 1 then f$ = "1" + f$
+ 
+0 rem Print:
+150 ? n1$:?"+":?n2$:?"=":?f$
