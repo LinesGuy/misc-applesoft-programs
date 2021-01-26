@@ -1,0 +1,8 @@
+0 rem prints primes up to 1321 because that's how many you can fit on a screen
+
+10 text : home : ?"Prime numbers":?" "; : onerr goto 50
+
+20 for N = 5 to 1321 step 2 : SN = N^0.5 : for P = 3 to SN step 2
+30 if int(N/P) = N/P then next N
+40 next P : print N;" "; : next N
+50 end
