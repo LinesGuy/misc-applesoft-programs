@@ -1,0 +1,28 @@
+0 rem physics engine I made when I had absolutely no idea how physics worked
+0 rem pretty convincing for a few seconds but eventually breaks
+
+10 hgr2
+20 R = 10 : rem Radius of ball.
+30 X = 30 : Y = 10 : rem Ball starting positions
+40 G = 0.2 : rem Gravity
+50 T = 4 : rem Terminal velocity
+
+
+60 C = 1.5
+
+210 Poke 230,32 : gosub 300 : Poke 49236,0 : poke 230,64 : gosub 300 : poke 49237,0 : goto 210
+300 hcolor = 0 : hplot 0,0 : call -3082
+
+310 Hcolor = 3 : hplot 0,0 to 80,191 : hplot 279,0 to 200,191 : hplot 0,100 to 279,191 : hplot 279,100 to 0,191
+
+320 hcolor = 6 : for ch = 0 to 6.28 step 0.1
+325 if hscrn(sin(ch)*r+x,cos(ch)*r+y) = 3 then vx = vx - sin(ch)*c : vy = vy - cos(ch)*c
+330 next
+340 for ch = 0 to 6.28 step 0.1 : hplot sin(ch)*r+x,cos(ch)*r+y : next : x = x + vx : vy = vy + g : y = y + vy
+350 if vx > t then vx = t
+360 if vy > t then vy = t
+370 if vx < -t then vx = -t
+380 if vy < -t then vy = -t
+390 return
+
+400 return
