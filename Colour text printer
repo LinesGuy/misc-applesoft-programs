@@ -1,0 +1,117 @@
+0 rem Program that prints characters by plotting them one line at a time
+0 rem this lets you change the colour of the text as shown in the demo
+0 rem Only supports uppercase letters
+10 hgr : hcolor = 3
+
+
+199Poke230,32:gosub 200:Poke49236,0:poke 230,64:gosub200:poke49237,0:goto199
+200fr=fr+1:?"frame ";fr:call-3086
+
+210 rem demo:
+220 sentence$ = "QUICK BROWN FOX JUMPS OVER THE LAZY DOG"
+230 xtext = 1
+240 ytext = 1
+245 spacing = 2
+250 gosub 1000 : rem Graphical Printer
+
+
+999 return
+1000 rem Graphical Printer (se$, xt, yt, sp)
+1100 on asc(left$(sentence$, 1)) gosub 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1232,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1265,1266,1267,1268,1269,1270,1271,1272,1273,1274,1275,1276,1277,1278,1279,1280,1281,1282,1283,1284,1285,1286,1287,1288,1289,1290
+1110 sentence$ = right$(sentence$, len(sentence$) - 1)
+1115 if len(sentence$) =< 0 then return
+1120 xtext = xtext + 5 + spacing
+1125 ct = int(rnd(1)*5)+1 : hcolor = ct : if ct > 2 then hcolor = ct + 2
+1130 goto 1100
+1200 rem ctrl-@
+1201 rem ctrl-A
+1202 rem ctrl-B
+1203 rem ctrl-C
+1204 rem ctrl-D
+1205 rem ctrl-E
+1206 rem ctrl-F
+1207 rem ctrl-G (Bell)
+1208 rem ctrl-H (Left arrow)
+1209 rem ctrl-I (Tab)
+1210 rem ctrl-J (Down arrow)
+1211 rem ctrl-K (Up arrow)
+1212 rem ctrl-L
+1213 rem ctrl-M (Return)
+1214 rem ctrl-N
+1215 rem ctrl-O
+1216 rem ctrl-P
+1217 rem ctrl-Q
+1218 rem ctrl-R
+1219 rem ctrl-S
+1220 rem ctrl-T
+1221 rem ctrl-U (Right arrow)
+1222 rem ctrl-V
+1223 rem ctrl-W
+1224 rem ctrl-X
+1225 rem ctrl-Y
+1226 rem ctrl-Z
+1227 rem ctrl-[ (esc)
+1228 rem ctrl-\
+1229 rem ctrl-]
+1230 rem ctrl-^
+1231 rem ctrtl-_
+1232 return : rem space
+1233 rem !
+1234 rem "
+1235 rem #
+1236 rem $
+1237 rem %
+1238 rem &
+1239 rem '
+1240 rem (
+1241 rem )
+1242 rem *
+1243 rem +
+1244 rem ,
+1245 rem _
+1246 rem .
+1247 rem /
+1248 rem 0
+1249 rem 1
+1250 rem 2
+1251 rem 3
+1252 rem 4
+1253 rem 5
+1254 rem 6
+1255 rem 7
+1256 rem 8
+1257 rem 9
+1258 rem :
+1259 rem ;
+1260 rem <
+1261 rem =
+1262 rem >
+1263 rem ?
+1264 rem @
+1265 hplot xt,yt+6 to xt,yt+2 to xt+2,yt to xt+4,yt+2 to xt+4,yt+6 : hplot xt,yt+4 to xt+4,yt+4 : return : rem A
+1266 hplot xt+3,yt to xt,yt to xt,yt+6 to xt+3,yt+6 : hplot xt+4,yt+1 to xt+4,yt+2 : hplot xt+1,yt+3 to xt+3,yt+3 : hplot xt+4, yt+4 to xt+4,yt+5 : return : rem B
+1267 hplot xt+4,yt+1 : hplot xt+3,yt to xt+1,yt : hplot xt,yt+1 to xt,yt+5 : hplot xt+1,yt+6 to xt+3,yt+6 : hplot xt+4,yt+5 : return : rem C
+1268 hplot xt+3,yt to xt,yt to xt,yt+6 to xt+3,yt+6 : hplot xt+4,yt+1 to xt+4,yt+5 : return : rem D
+1269 hplot xt+4,yt to xt,yt to xt,yt+6 to xt+4,yt+6 : hplot xt,yt+3 to xt+3,yt+3 : return : rem E
+1270 hplot xt+4,yt to xt,yt to xt,yt+6 : hplot xt,yt+3 to xt+3,yt+3 : return : rem F
+1271 hplot xt+4,yt to xt+1,yt : hplot xt,yt+1 to xt,yt+5 : hplot xt+1,yt+6 to xt+4,yt+6 to xt+4,yt+4 to xt+3,yt+4 : return : rem G
+1272 hplot xt,yt to xt,yt+6 : hplot xt+1,yt+3 to xt+4,yt+3 : hplot xt+4,yt to xt+4,yt+6 : return : rem H
+1273 hplot xt+1,yt to xt+3,yt : hplot xt+2,yt+1 to xt+2,yt+5 : hplot xt+1,yt+6 to xt+3,yt+6 : return : rem I
+1274 hplot xt+4,yt to xt+4,yt+5 : hplot xt+3,yt+6 to xt+1,yt+6 : hplot xt,yt+5 : return : rem J
+1275 hplot xt,yt to xt,yt+6 : hplot xt+4,yt to xt+1,yt+3 to xt+4,yt+6 : return : rem K
+1276 hplot xt,yt to xt,yt+6 to xt+4,yt+6 : return : rem L
+1277 hplot xt,yt+6 to xt,yt to xt+2,yt+2 to xt+4,yt to xt+4,yt+6 : hplot xt+2,yt+3 : return : rem M
+1278 hplot xt,yt to xt,yt+6 : hplot xt+1,yt+2 to xt+3,yt+4 : hplot xt+4,yt to xt+4,yt+6 : return : rem N
+1279 hplot xt+1,yt to xt+3,yt : hplot xt+4,yt+1 to xt+4,yt+5 : hplot xt+3,yt+6 to xt+1,yt+6 : hplot xt,yt+5 to xt,yt+1 : return : rem O
+1280 hplot xt+3,yt to xt,yt to xt,yt+6 : hplot xt+4,yt+1 to xt+4,yt+2 : hplot xt+3,yt+3 to xt+1,yt+3 : return : rem P
+1281 hplot xt+1,yt to xt+3,yt : hplot xt+4,yt+1 to xt+4,yt+4 : hplot xt,yt+1 to xt,yt+5 : hplot xt+1,yt+6 to xt+2,yt+6 : hplot xt+2,yt+4 to xt+4,yt+6 : return : rem Q
+1282 hplot xt+3,yt to xt,yt to xt,yt+6 : hplot xt+4,yt+1 to xt+4,yt+2 : hplot xt+3,yt+3 to xt+1,yt+3 to xt+4,yt+6: return : rem R
+1283 hplot xt+4,yt+1 : hplot xt+3,yt to xt+1,yt : hplot xt,yt+1 to xt,yt+2 : hplot xt+1,yt+3 to xt+3,yt+3 : hplot xt+4,yt+4 to xt+4,yt+5 : hplot xt+3,yt+6 to xt+1,yt+6 : hplot xt,yt+5: return : rem S
+1284 hplot xt,yt to xt+4,yt : hplot xt+2,yt to xt+2,yt+6 : return : rem T
+1285 hplot xt,yt to xt,yt+5 : hplot xt+1,yt+6 to xt+3,yt+6 : hplot xt+4,yt+5 to xt+4,yt : return : rem U
+1286 hplot xt,yt to xt,yt+4 to xt+2,yt+6 to xt+4,yt+4 to xt+4,yt : return : rem V
+1287 hplot xt,yt to xt,yt+6 to xt+2,yt+4 to xt+4,yt+6 to xt+4,yt : hplot xt+2,yt+3 :  return : rem W
+1288 hplot xt,yt to xt,yt+1 to xt+4,yt+5 to xt+4,yt+6 : hplot xt,yt+6 to xt,yt+5 to xt+4,yt+1 to xt+4,yt : return : rem X
+1289 hplot xt,yt to xt,yt+1 to xt+2,yt+3 to xt+2,yt+6 : hplot xt+4,yt to xt+4,yt+1 to xt+3,yt+2 : return : rem Y
+1290 hplot xt,yt to xt+4,yt to xt+4,yt+1 to xt,yt+5 to xt,yt+6 to xt+4,yt+6 : return : rem Z
+1500 end
