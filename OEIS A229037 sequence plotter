@@ -1,0 +1,17 @@
+0 rem OEIS A229037 "forest fire" sequence plotter
+0 rem https://oeis.org/A229037
+
+10 hgr : hcolor = 3 : for i = 1 to 20 : print : next i
+20 items = 280
+30 dim item(items) : item(1) = 1 : item(2) = 1
+40 j = 3
+
+50 item(j) = 1
+60 max = int((j-1)/2)
+70 k = 1
+80 d1 = item(j)-item(j-k)
+90 d2 = item(j-k)-item(j-2*k)
+100 if d1=d2 then item(j) = item(j) + 1 :goto 70 : rem k = 1
+110 if k < max then k = k + 1 : goto 80 : rem d1 = item(j)...
+120 hplot j,159-item(j) : print "term ";j;" = ";item(j)
+130 if j < items then j = j + 1 : goto 50 : rem item(j) = 1
