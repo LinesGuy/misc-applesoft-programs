@@ -1,0 +1,23 @@
+0 rem mimics rotating cube
+0 rem runs fast but doesn't look too convincing
+
+1 hgr2 : hcolor = 3
+20 r1 = 60 : rem Size of cube, r2 and h are calculated automatically
+30 s = 0.003 : rem Speed of cube rotating
+40 r2 = r1/2
+50 h = r1+r2
+
+
+210 Poke 230,32 : gosub 300 : Poke 49236,0 : poke 230,64 : gosub 300 : poke 49237,0 : goto 210
+
+300 call -3086
+310 x = x + s
+320 y = y + s
+330 hplot sin(x)*r1+r1,cos(y)*r2+r2 to sin(x)*r1+r1,cos(y)*r2+r2+h
+340 hplot sin(x+1.57)*r1+r1,cos(y+1.57)*r2+r2 to sin(x+1.57)*r1+r1,cos(y+1.57)*r2+r2+h
+350 hplot sin(x+3.14)*r1+r1,cos(y+3.14)*r2+r2 to sin(x+3.14)*r1+r1,cos(y+3.14)*r2+r2+h
+360 hplot sin(x+4.71)*r1+r1,cos(y+4.71)*r2+r2 to sin(x+4.71)*r1+r1,cos(y+4.71)*r2+r2+h
+370 hplot sin(x)*r1+r1,cos(y)*r2+r2 to sin(x+1.57)*r1+r1,cos(y+1.57)*r2+r2 to sin(x+3.14)*r1+r1,cos(y+3.14)*r2+r2 to sin(x+4.71)*r1+r1,cos(y+4.71)*r2+r2 to sin(x)*r1+r1,cos(y)*r2+r2 
+380 hplot sin(x)*r1+r1,cos(y)*r2+r2+h to sin(x+1.57)*r1+r1,cos(y+1.57)*r2+r2+h to sin(x+3.14)*r1+r1,cos(y+3.14)*r2+r2+h to sin(x+4.71)*r1+r1,cos(y+4.71)*r2+r2+h to sin(x)*r1+r1,cos(y)*r2+r2+h
+
+99999 return
