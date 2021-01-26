@@ -1,0 +1,43 @@
+0 rem 1D Next nearest neighbour cellular automata (rule 11000011101111001110001110010000)
+
+10 hgr2 : for re = 1 to peek(78) : er = rnd(1) : next
+13 for X = 2 to 277 : hcolor = int(rnd(1)*2)*3 : hplot X,0 : next
+16 hcolor = 3 : hplot 0,0 to 0,191 : hplot 1,0 to 1,191
+20 for Y = 0 to 190
+30 for X = 2 to 277
+
+
+999 rem And now for the real brains of this program:
+1000 if hscrn(X-2,Y) = 3 and hscrn(X-1,Y) = 3 and hscrn(X,Y) = 3 and hscrn(X+1,Y) = 3 and hscrn(X+2,Y) = 3 then hcolor = 3 : hplot X,Y+1 : goto 1032
+1001 if hscrn(X-2,Y) = 3 and hscrn(X-1,Y) = 3 and hscrn(X,Y) = 3 and hscrn(X+1,Y) = 3 and hscrn(X+2,Y) = 0 then hcolor = 3 : hplot X,Y+1 : goto 1032
+1002 if hscrn(X-2,Y) = 3 and hscrn(X-1,Y) = 3 and hscrn(X,Y) = 3 and hscrn(X+1,Y) = 0 and hscrn(X+2,Y) = 3 then hcolor = 0 : hplot X,Y+1 : goto 1032
+1003 if hscrn(X-2,Y) = 3 and hscrn(X-1,Y) = 3 and hscrn(X,Y) = 3 and hscrn(X+1,Y) = 0 and hscrn(X+2,Y) = 0 then hcolor = 0 : hplot X,Y+1 : goto 1032
+1004 if hscrn(X-2,Y) = 3 and hscrn(X-1,Y) = 3 and hscrn(X,Y) = 0 and hscrn(X+1,Y) = 3 and hscrn(X+2,Y) = 3 then hcolor = 0 : hplot X,Y+1 : goto 1032
+1005 if hscrn(X-2,Y) = 3 and hscrn(X-1,Y) = 3 and hscrn(X,Y) = 0 and hscrn(X+1,Y) = 3 and hscrn(X+2,Y) = 0 then hcolor = 0 : hplot X,Y+1 : goto 1032
+1006 if hscrn(X-2,Y) = 3 and hscrn(X-1,Y) = 3 and hscrn(X,Y) = 0 and hscrn(X+1,Y) = 0 and hscrn(X+2,Y) = 3 then hcolor = 3 : hplot X,Y+1 : goto 1032
+1007 if hscrn(X-2,Y) = 3 and hscrn(X-1,Y) = 3 and hscrn(X,Y) = 0 and hscrn(X+1,Y) = 0 and hscrn(X+2,Y) = 0 then hcolor = 3 : hplot X,Y+1 : goto 1032
+1008 if hscrn(X-2,Y) = 3 and hscrn(X-1,Y) = 0 and hscrn(X,Y) = 3 and hscrn(X+1,Y) = 3 and hscrn(X+2,Y) = 3 then hcolor = 3 : hplot X,Y+1 : goto 1032
+1009 if hscrn(X-2,Y) = 3 and hscrn(X-1,Y) = 0 and hscrn(X,Y) = 3 and hscrn(X+1,Y) = 3 and hscrn(X+2,Y) = 0 then hcolor = 0 : hplot X,Y+1 : goto 1032
+1010 if hscrn(X-2,Y) = 3 and hscrn(X-1,Y) = 0 and hscrn(X,Y) = 3 and hscrn(X+1,Y) = 0 and hscrn(X+2,Y) = 3 then hcolor = 3 : hplot X,Y+1 : goto 1032
+1011 if hscrn(X-2,Y) = 3 and hscrn(X-1,Y) = 0 and hscrn(X,Y) = 3 and hscrn(X+1,Y) = 0 and hscrn(X+2,Y) = 0 then hcolor = 3 : hplot X,Y+1 : goto 1032
+1012 if hscrn(X-2,Y) = 3 and hscrn(X-1,Y) = 0 and hscrn(X,Y) = 0 and hscrn(X+1,Y) = 3 and hscrn(X+2,Y) = 3 then hcolor = 3 : hplot X,Y+1 : goto 1032
+1013 if hscrn(X-2,Y) = 3 and hscrn(X-1,Y) = 0 and hscrn(X,Y) = 0 and hscrn(X+1,Y) = 3 and hscrn(X+2,Y) = 0 then hcolor = 3 : hplot X,Y+1 : goto 1032
+1014 if hscrn(X-2,Y) = 3 and hscrn(X-1,Y) = 0 and hscrn(X,Y) = 0 and hscrn(X+1,Y) = 0 and hscrn(X+2,Y) = 3 then hcolor = 0 : hplot X,Y+1 : goto 1032
+1015 if hscrn(X-2,Y) = 3 and hscrn(X-1,Y) = 0 and hscrn(X,Y) = 0 and hscrn(X+1,Y) = 0 and hscrn(X+2,Y) = 0 then hcolor = 0 : hplot X,Y+1 : goto 1032
+1016 if hscrn(X-2,Y) = 0 and hscrn(X-1,Y) = 3 and hscrn(X,Y) = 3 and hscrn(X+1,Y) = 3 and hscrn(X+2,Y) = 3 then hcolor = 3 : hplot X,Y+1 : goto 1032
+1017 if hscrn(X-2,Y) = 0 and hscrn(X-1,Y) = 3 and hscrn(X,Y) = 3 and hscrn(X+1,Y) = 3 and hscrn(X+2,Y) = 0 then hcolor = 3 : hplot X,Y+1 : goto 1032
+1018 if hscrn(X-2,Y) = 0 and hscrn(X-1,Y) = 3 and hscrn(X,Y) = 3 and hscrn(X+1,Y) = 0 and hscrn(X+2,Y) = 3 then hcolor = 3 : hplot X,Y+1 : goto 1032
+1019 if hscrn(X-2,Y) = 0 and hscrn(X-1,Y) = 3 and hscrn(X,Y) = 3 and hscrn(X+1,Y) = 0 and hscrn(X+2,Y) = 0 then hcolor = 0 : hplot X,Y+1 : goto 1032
+1020 if hscrn(X-2,Y) = 0 and hscrn(X-1,Y) = 3 and hscrn(X,Y) = 0 and hscrn(X+1,Y) = 3 and hscrn(X+2,Y) = 3 then hcolor = 0 : hplot X,Y+1 : goto 1032
+1021 if hscrn(X-2,Y) = 0 and hscrn(X-1,Y) = 3 and hscrn(X,Y) = 0 and hscrn(X+1,Y) = 3 and hscrn(X+2,Y) = 0 then hcolor = 0 : hplot X,Y+1 : goto 1032
+1022 if hscrn(X-2,Y) = 0 and hscrn(X-1,Y) = 3 and hscrn(X,Y) = 0 and hscrn(X+1,Y) = 0 and hscrn(X+2,Y) = 3 then hcolor = 3 : hplot X,Y+1 : goto 1032
+1023 if hscrn(X-2,Y) = 0 and hscrn(X-1,Y) = 3 and hscrn(X,Y) = 0 and hscrn(X+1,Y) = 0 and hscrn(X+2,Y) = 0 then hcolor = 3 : hplot X,Y+1 : goto 1032
+1024 if hscrn(X-2,Y) = 0 and hscrn(X-1,Y) = 0 and hscrn(X,Y) = 3 and hscrn(X+1,Y) = 3 and hscrn(X+2,Y) = 3 then hcolor = 3 : hplot X,Y+1 : goto 1032
+1025 if hscrn(X-2,Y) = 0 and hscrn(X-1,Y) = 0 and hscrn(X,Y) = 3 and hscrn(X+1,Y) = 3 and hscrn(X+2,Y) = 0 then hcolor = 0 : hplot X,Y+1 : goto 1032
+1026 if hscrn(X-2,Y) = 0 and hscrn(X-1,Y) = 0 and hscrn(X,Y) = 3 and hscrn(X+1,Y) = 0 and hscrn(X+2,Y) = 3 then hcolor = 0 : hplot X,Y+1 : goto 1032
+1027 if hscrn(X-2,Y) = 0 and hscrn(X-1,Y) = 0 and hscrn(X,Y) = 3 and hscrn(X+1,Y) = 0 and hscrn(X+2,Y) = 0 then hcolor = 3 : hplot X,Y+1 : goto 1032
+1028 if hscrn(X-2,Y) = 0 and hscrn(X-1,Y) = 0 and hscrn(X,Y) = 0 and hscrn(X+1,Y) = 3 and hscrn(X+2,Y) = 3 then hcolor = 0 : hplot X,Y+1 : goto 1032
+1029 if hscrn(X-2,Y) = 0 and hscrn(X-1,Y) = 0 and hscrn(X,Y) = 0 and hscrn(X+1,Y) = 3 and hscrn(X+2,Y) = 0 then hcolor = 0 : hplot X,Y+1 : goto 1032
+1030 if hscrn(X-2,Y) = 0 and hscrn(X-1,Y) = 0 and hscrn(X,Y) = 0 and hscrn(X+1,Y) = 0 and hscrn(X+2,Y) = 3 then hcolor = 0 : hplot X,Y+1 : goto 1032
+1031 if hscrn(X-2,Y) = 0 and hscrn(X-1,Y) = 0 and hscrn(X,Y) = 0 and hscrn(X+1,Y) = 0 and hscrn(X+2,Y) = 0 then hcolor = 0 : hplot X,Y+1 : goto 1032
+1032 next : next
