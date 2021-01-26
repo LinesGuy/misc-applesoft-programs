@@ -1,0 +1,3 @@
+0 rem One-liner to calculate factorial of an integer since basic did not come with one
+
+10 input "Input number"; N : for X = 1 to N - 1 : N = N * X : next X : ? N : goto 10
