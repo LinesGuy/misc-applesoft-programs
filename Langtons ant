@@ -1,0 +1,39 @@
+0 rem Langtons ant. supports hi-res and lo-res modes.
+
+0 rem If width is LESS THAN 39 and height is LESS THAN 47,
+0 rem then it automatically switches to low resolution mode (GR).
+
+10 width = 190 : rem max 278
+20 height = 190 : rem max 190
+
+
+
+50 X = int(width/2) : Y = int(height/2) : D = 1
+60 if width < 39 and height < 47 then goto 200
+
+100 hgr2 : hcolor = 1 : hplot width+1,0 to width+1,height+1 to 0,height+1
+110 gosub 3000 : if hscrn(x,y) = 0 then hcolor = 3 : hplot X,Y : gosub 2000
+120 gosub 3000 : if hscrn(x,y) = 3 then hcolor = 0 : hplot X,Y : gosub 1000
+130 goto 110
+
+200 gr : POKE 49234,0 : color = 12 : vlin 0,height+1 at width+1 : hlin width+1,0 at height+1
+210 gosub 3000 : if scrn(x,y) = 0 then color = 15 : plot x,y : gosub 2000
+220 gosub 3000 : if scrn(x,y) = 15 then color = 0 : plot x,y : gosub 1000
+230 goto 210
+
+
+1000 if D = 0 then D = 1 : X = X + 1 : return
+1010 if D = 1 then D = 2 : Y = Y + 1 : return
+1020 if D = 2 then D = 3 : X = X - 1 : return
+1030 if D = 3 then D = 0 : Y = Y - 1 : return
+
+2000 if D = 0 then D = 3 : X = X - 1 : return
+2010 if D = 1 then D = 0 : Y = Y - 1 : return
+2020 if D = 2 then D = 1 : X = X + 1 : return
+2030 if D = 3 then D = 2 : Y = Y + 1 : return
+
+3000 if X > width then X = 0
+3010 if X < 0 then X = width
+3020 if Y > height then Y = 0
+3030 if Y < 0 then Y = height
+3040 return
