@@ -1,0 +1,30 @@
+0 rem Calculating pi with collisions
+0 rem based on the videoby 3blue1brown
+0 rem google the name of this program for more info
+
+10 hgr : hcolor = 3 : for i = 1 to 20 : print : next i
+20 height = 159 : width = 280
+30 wall = 10
+35 digits = 3
+40 ts = 10^(digits-2)
+
+50 x1 = 100 : s1 = 10 : m1 = 1 : v1 = 0
+60 x2 = 200 : s2 = 30 : m2 = 100^(digits-1) : v2 = -3/ts
+
+
+199Poke230,32:gosub 200:Poke49236,0:poke 230,64:gosub200:poke49237,0:goto199
+200call-3086:print col
+205 hplot wall,0 to wall,height
+
+209 for i = 1 to ts
+210 x1 = x1 + v1 : x2 = x2 + v2
+213 if x1+s1 > x2 then sum = m1+m2 : n1 = (m1-m2)/(sum)*v1+(2*m2)/(sum)*v2 : n2 = (2*m1)/(sum)*v1-(m1-m2)/(sum)*v2 : v1 = n1 : v2 = n2 : col = col + 1
+215 if x1<wall then v1=-v1 : col = col + 1
+216 next i
+
+218 d1 = x1 : d2 = x2 : if d1<wall then d1=wall
+219 if d2 < d1+s1 then d2 = d1+s1
+220 hplot d1,height to d1+s1,height to d1+s1,height-s1 to d1,height-s1 to d1,height
+230 if d2+s2 < width then hplot d2,height to d2+s2,height to d2+s2,height-s2 to d2,height-s2 to d2,height
+
+999 return
