@@ -1,0 +1,19 @@
+0 rem 1D Cellular Automata (rule 30)
+
+10 hgr2 : hcolor = 3 : hplot 140,0
+20 for Y = 0 to 140
+30 for X = 1 to 278
+40 gosub 1000
+50 next
+60 next
+
+
+1000 if hscrn(x-1,y) = 3 and hscrn(X,Y) = 3 and hscrn(X+1,Y) = 3 then hcolor = 0 : hplot X,Y+1
+1010 if hscrn(x-1,y) = 3 and hscrn(X,Y) = 3 and hscrn(X+1,Y) = 0 then hcolor = 0 : hplot X,Y+1
+1020 if hscrn(x-1,y) = 3 and hscrn(X,Y) = 0 and hscrn(X+1,Y) = 3 then hcolor = 0 : hplot X,Y+1
+1030 if hscrn(x-1,y) = 3 and hscrn(X,Y) = 0 and hscrn(X+1,Y) = 0 then hcolor = 3 : hplot X,Y+1
+1040 if hscrn(x-1,y) = 0 and hscrn(X,Y) = 3 and hscrn(X+1,Y) = 3 then hcolor = 3 : hplot X,Y+1
+1050 if hscrn(x-1,y) = 0 and hscrn(X,Y) = 3 and hscrn(X+1,Y) = 0 then hcolor = 3 : hplot X,Y+1
+1060 if hscrn(x-1,y) = 0 and hscrn(X,Y) = 0 and hscrn(X+1,Y) = 3 then hcolor = 3 : hplot X,Y+1
+1070 if hscrn(x-1,y) = 0 and hscrn(X,Y) = 0 and hscrn(X+1,Y) = 0 then hcolor = 0 : hplot X,Y+1
+1080 return
