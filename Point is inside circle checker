@@ -1,0 +1,13 @@
+0 rem Program to detect if point is inside circle
+0 rem Uses mouse
+
+0 rem Click run, wait for circle to draw, then hover mouse over circle.
+10 hgr : hcolor = 3 : r = 50 : cx = 140 : cy = 96
+20 for x = 0 to 6.282 step 1/r : hplot sin(x)*r+cx,cos(x)*r+cy : next
+
+
+100 px=int(pdl(0)*1.094):py=int(pdl(1)*.749)
+110 distance = sqr((cx-px)^2+(cy-py)^2)
+120 if distance < r then print "Collision detected" : goto 140
+130 print "No collision detected"
+140 goto 100
