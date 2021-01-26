@@ -1,0 +1,25 @@
+0 rem Winning solitaire animation
+
+10 hgr2 : hcolor = 1 : for x = 0 to 279 : hplot x,0 to x,191 : next
+20 X = int(rnd(1)*200)+40
+30 Y = int(rnd(1)*100)
+35 C = int(rnd(1)*8)
+40 XV = rnd(1)*2-1 : YV = 0 : G = 0.05 : D = 1+rnd(1)
+45 for r = 1 to 100
+50 gosub 1000
+60 x = x + xv
+65 yv = yv + g
+70 y = y + yv
+80 if y > 182 then yv = -yv/d : y = 182
+800 next
+850 goto 20
+
+999 end
+1000 if x-5>0andx-5<280andx+5>0andx+5<280andy-10>0andy-10<192andy+10>0andy+10<192 then goto 1006
+1005 return
+1006 hcolor = 3 : for r = -5 to 5 : hplot x+r,y-10 to x+r,y+10 : next
+1010 hcolor = C : hplot x-4,y-9 to x-4,y-7 : hplot x-2,y-9 to x-2,y-7 : hplot x-1,y-9 to x-1,y-7
+1020 hplot x+4,y+9 to x+4,y+7 : hplot x+2,y+9 to x+2,y+7 : hplot x+1,y+9 to x+1,y+7
+1030 hplot x-4,y-5 to x-4,y-4 : hplot x-3,y-4 to x-3,y-3 : hplot x-2,y-4 to x-2,y-5
+1040 hplot x+4,y+5 to x+4,y+4 : hplot x+3,y+4 to x+3,y+3 : hplot x+2,y+4 to x+2,y+5
+2000 return
