@@ -1,0 +1,162 @@
+0 rem My attempt at creating Logo in basic. Did not finish it but uploading it
+0 rem anyway for completeness.
+0 rem There is no demo. Following rem lines are from when I made the program:
+
+
+0 rem First three characters of an instruction are the line number (1-999)
+
+0 rem Numbers must include 0's if less than 3 digits long.
+0 rem *The above statement applies to all numbers in all code*
+
+0 rem Instructions: 
+0 rem FDnnn / Move forward nnn pixels
+0 rem BKnnn / move backward nnn pixels
+0 rem RTnnn / rotate right nnn degrees
+0 rem LTnnn / rotate left nnn degrees
+0 rem PU / Pen up (stop drawing)
+0 rem PD / Pen down (start drawing)
+0 rem END / End program cleanly
+0 rem GOTOnnn / Goto line number nnn
+
+0 rem Unimplemented instructions:
+0 rem RPTnnn / Start repeat loop nnn times
+0 rem ERPT / End repeat loop
+
+0 rem Setup:
+1 goto 10000
+10000 
+10001 hgr : hcolor = 3
+10002 P = 1
+10003 tr = 0
+10004 dim in$(1000)
+10005 tx = 140 : ty = 96
+10099 goto 20000
+
+0 rem Onerr / end:
+10100 home : vtab 23 : print "END OF PROGRAM" : hcolor = 5 : hplot tx-1,ty to tx+1,ty : hplot tx,ty-1 to tx,ty+1 : end
+
+0 rem parser:
+20000 onerr goto 20020
+20010 read in$ : in$(val(left$(in$,3))) = mid$(in$,4,255) : goto 20010
+20020 goto 30000
+
+0 rem instructions:
+30000 in = in + 1 : home : vtab 23 : print "IN ";in
+
+31000 if left$(in$(in),2) = "FD" then ox = tx : oy = ty : tx = tx - sin(td/57.29)*val(mid$(in$(in),4,255)) : ty = ty - cos(td/57.29)*val(mid$(in$(in),4,255)) : if p = 1 then hplot ox,oy to tx,ty
+31001 if left$(in$(in),2) = "FD" then goto 40000
+31010 if left$(in$(in),2) = "BK" then ox = tx : oy = ty : tx = tx + sin(td/57.29)*val(mid$(in$(in),4,255)) : ty = ty + cos(td/57.29)*val(mid$(in$(in),4,255)) : if p = 1 then hplot ox,oy to tx,ty
+31011 if left$(in$(in),2) = "BK" then goto 40000
+31020 if left$(in$(in),2) = "LT" then td = td + val(mid$(in$(in),3,255)) : goto 40000
+31030 if left$(in$(in),2) = "RT" then td = td - val(mid$(in$(in),3,255)) : goto 40000
+31040 if left$(in$(in),2) = "PU" then p = 0 : goto 40000
+31050 if left$(in$(in),2) = "PD" then p = 1 : goto 40000
+31060 if left$(in$(in),3) = "END" then goto 10100
+31070 if left$(in$(in),3) = "RPT" then gosub 50000 : goto 40000
+31080 if left$(in$(in),3) = "ERPT" then gosub 50000 : goto 40000
+31090 if left$(in$(in),4) = "GOTO" then in = val(mid$(in$(in),5,255))-1 : goto 40000
+40000 goto 30000
+
+50000 return
+
+0 rem code (1-999):
+
+010 data "010"
+020 data "020"
+030 data "030"
+040 data "040"
+050 data "050"
+060 data "060"
+070 data "070"
+080 data "080"
+090 data "090"
+100 data "100"
+110 data "110"
+120 data "120"
+130 data "130"
+140 data "140"
+150 data "150"
+160 data "160"
+170 data "170"
+180 data "180"
+190 data "190"
+200 data "200"
+210 data "210"
+220 data "220"
+230 data "230"
+240 data "240"
+250 data "250"
+260 data "260"
+270 data "270"
+280 data "280"
+290 data "290"
+310 data "310"
+320 data "320"
+330 data "330"
+340 data "340"
+350 data "350"
+360 data "360"
+370 data "370"
+380 data "380"
+390 data "390"
+400 data "400"
+410 data "410"
+420 data "420"
+430 data "430"
+440 data "440"
+450 data "450"
+460 data "460"
+470 data "470"
+480 data "480"
+490 data "490"
+500 data "500"
+510 data "510"
+520 data "520"
+530 data "530"
+540 data "540"
+550 data "550"
+560 data "560"
+570 data "570"
+580 data "580"
+590 data "590"
+600 data "600"
+610 data "610"
+620 data "620"
+630 data "630"
+640 data "640"
+650 data "650"
+660 data "660"
+670 data "670"
+680 data "680"
+690 data "690"
+700 data "700"
+710 data "710"
+720 data "720"
+730 data "730"
+740 data "740"
+750 data "750"
+760 data "760"
+770 data "770"
+780 data "780"
+790 data "790"
+800 data "800"
+810 data "810"
+820 data "820"
+830 data "830"
+840 data "840"
+850 data "850"
+860 data "860"
+870 data "870"
+880 data "880"
+890 data "890"
+900 data "900"
+910 data "910"
+920 data "920"
+930 data "930"
+940 data "940"
+950 data "950"
+960 data "960"
+970 data "970"
+980 data "980"
+990 data "990"
+999 data "999END"
