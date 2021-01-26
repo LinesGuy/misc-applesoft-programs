@@ -1,0 +1,69 @@
+0 rem given a sentence the program will determine if the sentence is english, spanish, french or german
+0 rem actually just checks individual words against a list of words from each language
+
+
+
+1 sen$ = "the quick brown fox jumps over the lazy dog he lands head first on a rotting maple log knocked unconscious fox sleeps with a shallow breath until the lazy dog awakes and worries him to death"
+0rem note: when changing sen$, only use lowercase letters
+0rem Anything else (numbers, caps, accent marks) will be ignored. 
+
+
+
+0rem wordlist:
+5 no = 4 : rem language count, increase if another language is added
+10 in$(1) = "the of and a to in is you that he was for on are as with his they i at be this have from or one had by word but not what all were we when your can said there use an each which she do how their if will up other about out many then them these so some her would make like him into time has look two more write go see number no way could people my than first water been call who oil its now find long down day did get come made may part"
+11 na$(1) = "english"
+12 in$(2) = "der die und in von zu das mit sich auf fur ist nicht ein als auch es an werden aus er hat dass sie nach bei um noch wie uber so sie nur oder aber vor bis mehr durch man prozent kann gegen schon wenn sein mark ihre dann unter wir soll ich jahr zwei diese wieder uhr will zwischen immer millionen was sagte gibt alle seit muss doch jetzt drei neue damit bereits da ab ohne sondern selbst ersten nun etwa heute weil ihm menschen deutschland anderen rund ihn ende jedoch zeit uns stadt geht sehr hier ganz berlin"
+13 na$(2) = "german"
+14 in$(3) = "le de un a etre et en avoir que pour dans ce il qui ner sur se pas plus pouvoir par je avec tout faire son mettre autre on mais nous comme ou si leur y dire elle devoir avant deux meme prendre aussi celui donner bien ou fois vous encore nouveau aller cela entre premier vouloir deja grand mon me moins aucun lui temps tres savoir falloir voir quelque sans raison notre dont non an monde jour monsieur demander alors apres trouver personne rendre part dernier venir pendant peu lequel suite bon comprendre depuis point ainsi heure rester"
+15 na$(3) = "french"
+16 in$(4) = "el de que y a en un ser se no haber por con su para como estar tener le lo lo todo pero mas hacer o poder decir este ir otro ese la si me ya ver porque dar cuando el muy sin vez mucho saber que sobre mi alguno mismo yo tambien hasta ano dos querer entre asi primero desde grande eso ni nos llegar pasar tiempo ella si dia uno bien poco deber entonces poner cosa tanto hombre parecer nuestro tan donde ahora parte despues vida quedar siempre creer hablar llevar dejar nada cada seguir menos neuvo encontrar"
+17 na$(4) = "spanish"
+
+
+
+0rem setup:
+30 text : home
+40 notrace
+50 dim we(no,128,128,128)
+
+0rem analyzing setup
+100 for re = 1 to no
+103 home : print "analyzing ";na$(re);" words" : print
+105 in$(re) = " " + in$(re) + " "
+
+0rem analyzing
+110 for x = 2 to len(in$(re))-1 : we(re,asc(mid$(in$(re),x-1,1)),asc(mid$(in$(re),x,1)),asc(mid$(in$(re),x+1,1))) = we(re,asc(mid$(in$(re),x-1,1)),asc(mid$(in$(re),x,1)),asc(mid$(in$(re),x+1,1))) + 1 : next x
+150 next re
+190 sen$ = " " + sen$ + " "
+
+0rem analyzing sentences in languages
+200 for re = 1 to no
+205 home : print "analyzing sentence in ";na$(re)
+210 for x = 2 to len(sen$)-1
+220 n1 = asc(mid$(sen$,x-1,1)) : n2 = asc(mid$(sen$,x,1)) : n3 = asc(mid$(sen$,x+1,1))
+230 scr(re) = scr(re) + we(re,n1,n2,n3)
+240 next x
+250 next re
+
+0rem calculate percentages
+260 for re = 1 to no : all = all + scr(re) : next
+270 for re = 1 to no : per(re) = int(scr(re)/all*1000)/10 : next
+
+0rem calculate winner
+295 home : print "sentence:";sen$ : print
+300 for re = 1 to no
+310 if scr(re) > fi then n = re : fi = scr(re)
+320 next
+350 print na$(n);" wins with ";per(n); "% confidence"
+
+0rem sort and give score of all other languages
+400 print
+410 for re = 1 to no
+415 n = 0 : fi = 0
+420 for x = 1 to no
+430 if scr(x) > fi then fi = scr(x) : n = x
+440 next
+450 print per(n);"%   ";na$(n)
+460 scr(n) = 0
+470 next
