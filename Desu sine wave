@@ -1,0 +1,8 @@
+0 rem Program to print sine wave with the word "DESU"
+0 rem made as an inside joke
+
+10 text : home : PR#3
+15 HZ = 10 : rem frequency of sine wave
+20 sp = int(30 + (30* sin(x* 3.14159 / 180 ) ))
+30 print spc(sp);"DESU"
+40 x = x + HZ : for w = 1 to 100 :next :goto 20
