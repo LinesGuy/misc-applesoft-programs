@@ -1,0 +1,37 @@
+0 rem Text based version of "waiting in line simulator"
+0 rem Some variables are never used/changed e.g "score"
+
+10 text : home : pr#0 : print "Click inside this screen                then press any key to start" : get K$ : home
+20 p = 50 
+21 h = 100
+22 a = 100
+23 s = 0
+50 vtab 1 : print "Your position in line: ";P;"/50"
+60 vtab 3 : print "Health: ";H;"   "
+70 print "Awake: ";A;"   "
+80 print "Score: ";S
+85 print "Coordinates: ";y;",";x;"     "
+90 vtab 8 : print "Press P to punch yourself"
+95 vtab 9 : print "Use WASD to move"
+
+100 HW = HW + 1 : if HW > 140 then HW = 0 : if H <> 100 then H = H + 1
+110 AW = AW + 1 : if AW > 70 then AW = 0 : A = A - 1 : if A < 0 then goto 1005
+120 K$ = "" : if peek(-16384)>127 then get K$ : if K$ = "P" then H = H - 10 : A = A + 10 : if A > 100 then A = 100
+121 if k$ = "W" then y = y + 1
+122 if k$ = "A" then x = x - 1
+123 if k$ = "S" then y = y - 1
+124 if k$ = "D" then x = x + 1
+125 if y > 2 then goto 1001
+126 if y < -2 then goto 1002
+127 if x > 2 or x < -2 then goto 1003
+130 if H < 0 then goto 1000
+150 goto 50
+
+1000 home : print "Congratulations, ":?"You died waiting in line" : goto 1020
+1001 home : print "Congratulations, ":?"You hit the customer in front of you,   and got kicked out of the line." : goto 1020
+1002 home : print "Congratulations, ":?"You hit the customer behind you,        and got kicked out of the line." : goto 1020
+1003 home : print "Congratulations, ":?"You stepped out of the line,            and are no longer allowed back in." : goto 1020
+1005 home : print "Congratulations, ":?"You fell asleep waiting in line" : goto 1020
+1020 vtab 6 : print "Final position in line: ";P
+1030 print "Score: ";S
+1050 end
