@@ -1,0 +1,32 @@
+0 rem This program does nothing as it is a blank
+0 rem template for creating fast visual programs
+0 rem comes with several functions like display buffering and fast circle drawing
+
+0 rem 0=black, 1=green, 2=voilet, 3=white, 5=orange, 6=blue
+0 rem k$="":ifpeek(-16384)>127thengetk$:gosub1000
+0 rem 360/(pi*2)=57.295
+0 rem x=int(pdl(0)*1.094):y=int(pdl(1)*.749)
+0 rem 10000 = draw fast circle (cx,cy,cr,cq)
+0 rem 10010 = draw perfect circle (cx,cy,cr)
+0 rem 10020 = draw perfect solid circle (cx,cy,cr) | avoid corners
+0 rem 10030 = swap 2 vars (s1,s2)
+1 hgr : hcolor = 3 : cq = 0.05 : height = 191 : width = 279
+
+
+
+198Poke230,32:gosub 199:Poke49236,0:poke 230,64:gosub199:poke49237,0:goto198
+199fr=fr+1:?"frame ";fr:call-3086
+
+
+
+999 return
+10000 for ci = 0 to 6.282 step 1/cr/cq : if sin(ci)*cr+cx > 0 and sin(ci)*cr+cx < 280 and cos(ci)*cr+cy > 0 and cos(ci)*cr+cy < 192 and sin(ci+1/cr/cq)*cr+cx > 0 and sin(ci+1/cr/cq)*cr+cx < 280 and cos(ci+1/cr/cq)*cr+cy > 0 and cos(ci+1/cr/cq)*cr+cy < 192 then hplot sin(ci)*cr+cx,cos(ci)*cr+cy to sin(ci+1/cr/cq)*cr+cx,cos(ci+1/cr/cq)*cr+cy
+10001 next : return
+10010 for ci = 0 to 6.282 step 1/cr : if sin(ci)*cr+cx > 0 and sin(ci)*cr+cx < 280 and cos(ci)*cr+cy > 0 and cos(ci)*cr+cy < 192 then hplot sin(ci)*cr+cx,cos(ci)*cr+cy
+10011 next : return
+10020 for sx = 0 to sqr(cr^2) step 1 : sy = sqr(cr^2 - (sx^2)) : if cx+sx > 0 and cx+sx < 280 and cy+sy > 0 and cy+sy < 192 and cy-sy > 0 and cy-sy < 192 then hplot cx+sx,cy+sy to cx+sx,cy-sy
+10022 if cx-sx > 0 and cx-sx < 280 and cy-sy > 0 and cy-sy < 192 and cy+sy > 0 and cy+sy < 192 then hplot cx-sx,cy-sy to cx-sx,cy+sy
+10023 if cx+sy > 0 and cx+sy < 280 and cy+sx > 0 and cy+sx < 192 and cx-sy > 0 and cx-sy < 280 then hplot cx+sy,cy+sx to cx-sy,cy+sx 
+10024 if cx+sy > 0 and cx+sy < 280 and cy-sx > 0 and cy-sx < 192 and cx-sy > 0 and cx-sy < 280 then hplot cx+sy,cy-sx to cx-sy,cy-sx
+10025 next : return
+10030 s3 = s1 : s1 = s2 : s2 = s3 : return
