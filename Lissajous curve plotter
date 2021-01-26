@@ -1,0 +1,25 @@
+0 rem Lissajous curve. Google for more info
+
+20 hgr2
+30 dim si(1000)
+
+60 A = 4 : B = 5
+70 r = 95 : rem max 95
+80 acc = 57
+90 sm = 10
+
+99 a = a / sm : b = b / sm
+
+110 Poke 230,32 : gosub 500 : Poke 49236,0 : poke 230,64 : gosub 500 : poke 49237,0 : goto 110
+500 rem temp
+501 hcolor = 0 : gosub 910 : rem clear screen
+510 hcolor = 3 : gosub 1000 : rem lissajous curve
+
+900 return
+910 hplot 0,0 : call -3082 : return
+
+1000 hplot r+(sin(vx+v)*r),r+(cos(vy)*r)
+1010 vx = vx + A : vy = vy + B
+1015 hplot to r+(sin(vx+v)*r),r+(cos(vy)*r)
+1020 if vx+vy < acc then goto 1010
+1030 vx = 0 : vy = 0 : v = v + 0.02 : return
