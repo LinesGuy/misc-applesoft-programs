@@ -1,0 +1,36 @@
+0 rem Alternative method of plotting fractal spirographs
+0 rem This code is actually less efficient and honestly I have no idea how it works.
+
+1 K = 4 : rem Number sides -1
+3 O = 10 : rem Number of orbits
+5 S = 3 : rem Size ratio of orbits
+7 R = 50 : rem Radius of first orbit (max size depends on values O, K and S.)
+
+9 A = 0.01 : rem
+
+
+
+10 hgr2 : hcolor = 3 : sw = 1 : dim R(O) : dim S(O) : dim X(O) : dim Y(O) : dim P(O)
+
+15 R(1) = R : S(1) = A
+20 for RA = 2 to O
+25 re(2) = re(2) + 1
+27 R(RA) = R : S(RA) = A
+30 for RC = 1 to re(2)
+40 R(RA) = R(RA) / S
+50 S(RA) = S(RA) * K
+60 next
+65 if sw = 1 then S(RA) = -S(RA) : sw = -1 : goto 70
+67 if sw = -1 then sw = 1
+70 next
+80 for RA = 1 to O : P(1) = 3.14 : next
+90 X(1) = 140 : Y(1) = 96
+
+100 for RA = 1 to O-1
+110 P(RA) = P(RA) + S(RA)
+120 X(RA+1) = sin(P(RA))*r(RA)+x(RA) : y(RA+1) = cos(p(RA))*r(RA)+y(RA)
+130 next
+
+140 P(O) = P(O) + S(O)
+150 hplot sin(P(O))*r(O)+x(O),cos(P(O))*r(O)+y(O)
+160 goto 100
