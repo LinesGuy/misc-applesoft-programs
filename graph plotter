@@ -1,0 +1,24 @@
+0 rem Graph plotter
+0 rem Demo plots tan(x) (line 100)
+0 rem i think it's inverted in the x-axis because im dumb
+
+0 rem update mar 3: fixed some formulas such as y=tan(x) not showing full graph, and finally added a zoom level
+
+100 Y=tan(x) : rem formula
+3 acc = 0.01 : rem decrease for more accuracy, but not zero
+4 z = 10 : rem zoom level (lower is more zoomed out, bigger is more zoomed in)
+
+
+
+10 hgr2 : hcolor = 1
+13 hplot 0,95 to 279,95 : hplot 139,0 to 139,191
+19 hcolor = 3
+20 y = y1 : x = x1 : gosub 100 : y1 = y : x1 = x
+25 y = y2 : x = x2 : gosub 100 : y2 = y : x2 = x
+30 if 279/2-x1*z > 0 and 279/2-x1*z < 279 and 191/2-y1*z > 0 and 191/2-y1*z < 191 then hplot 279/2-x1*z,191/2-y1*z
+35 if 279/2-x2*z > 0 and 279/2-x2*z < 279 and 191/2-y2*z > 0 and 191/2-y2*z < 191 then hplot 279/2-x2*z,191/2-y2*z
+40 x1 = x1 + acc
+45 x2 = x2 - acc
+50 goto 20
+
+110 return
