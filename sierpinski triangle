@@ -1,0 +1,15 @@
+0 rem  updated feb 5 2017 with a significant speed boost
+
+5 x1 = 140 : x2 = 140 : dim P(280)
+10 hgr2 : hcolor = 3
+20 hplot 140,0
+25 for Y = 0 to 138
+30 for X = x1 to x2
+40 if hscrn(X,Y) = 3 then P(X-1) = P(X-1) + 1 : P(X+1) = P(X+1) + 1
+50 next
+60 x1 = x1 - 1 : x2 = x2 + 1
+70 for X = x1 to x2
+80 if P(X) = 1 then hplot X,Y+1
+90 P(X) = 0
+100 next
+110 next
