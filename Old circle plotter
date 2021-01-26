@@ -1,0 +1,14 @@
+0 rem Old block of code to plot a circle
+0 rem slower than new method but faster for plotting a solid circle
+
+5 rad =  95 : rem radius of circle. max 95.5
+7 A = 1 : rem accuracy, decrease for more accurate results
+10 hgr2 : hcolor = 3
+11 va = rad
+15 for x = 0 to sqr(va^2) step A
+20 Y = sqr(va^2 - (X^2))
+30 hplot va+X,va+Y
+31 hplot to va+x,va-y
+32 hplot va-x,va-y
+33 hplot to va-x,va+y
+40 next
