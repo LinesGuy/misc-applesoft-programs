@@ -1,0 +1,28 @@
+0 rem "yourworldofetxt" in applesoft basic
+
+0 rem +~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~+
+0 rem | copy this into http://inexorabletash.github.io/jsbasic/ |
+0 rem | hit run, click somewhere in the box, then start typing! |
+0 rem +~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~+
+
+
+
+10 text : home : normal
+15 ?:?:?:?
+20 ?"  O"
+30 ?" O"
+40 ?" |__"
+50 ?"/\__\"
+60 ?"||__| ~BY LINESGUY JAN 4 2017"
+70 ?"USE ARROW KEYS TO MOVE CURSOR"
+90 X = 30 : Y = 10
+100 K$ = "å" : if PEEK(49152) >127 then get K$
+110 if K$ = CHR$(8) and X <> 1 then X = X - 1
+115 if K$ = chr$(127) and Y <>1 then x = x - 1 : normal : print " "
+120 if k$ = chr$(10) and Y <> 23 then Y = Y + 1
+130 if K$ = chr$(11) and Y <> 1 then y = y - 1
+140 if k$ = chr$(21) and X <> 40 then x = x + 1 : E = E + 1
+145 if K$ = chr$(13) and Y <> 23 then for EN = 0 to E : x = x - 1 : next EN : y = y + 1 : E = 0 : x = x + 1
+150 htab X : vtab y : inverse : print " " : htab X : vtab Y : normal : print " "  : htab X : vtab Y
+170 if K$ <> "å" and K$ <> chr$(127) and K$ <> chr$(8) and K$ <> chr$(13) and K$ <> chr$(10) and K$ <> chr$(11) and K$ <> chr$(21) then print K$ : E = E + 1 : if X <> 40 then X =X + 1
+180 normal : goto 100
